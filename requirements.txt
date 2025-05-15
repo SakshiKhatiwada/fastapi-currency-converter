@@ -3,3 +3,6 @@ pre_commit==4.2.0
 ruff==0.11.9
 black==25.1.0
 pytest==8.3.5
+uvicorn==0.34.2
+pydantic==2.11.4
+pydantic-settings==2.9.1
