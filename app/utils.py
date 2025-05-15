@@ -26,7 +26,6 @@ def get_currencies():
     response = requests.get(f"{API_ENDPOINT}/currencies?apikey={API_KEY}")
     try:
         data = response.json()
-        print("data", data)
         if "data" not in data:
             raise HTTPException(status_code=502, detail=f"API Error: {data}")
         return data["data"]
