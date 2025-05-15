@@ -5,6 +5,6 @@ client = TestClient(app)
 
 
 def test_site_check():
-    response = client.get("/")
+    response = client.get("/check")
     assert response.status_code == 200
     assert response.json()["status"] == "ok"
