@@ -1,13 +1,19 @@
-import requests
 import os
+import requests
 from fastapi import HTTPException
-from dotenv import load_dotenv
-
-load_dotenv()
+from app.config import settings
 
 
 API_ENDPOINT = "https://api.freecurrencyapi.com/v1"
-API_KEY = os.getenv("API_KEY")
+
+if os.getenv("ENV") != "CI":
+    API_KEY = settings.api_key
+else:
+    API_KEY = os.getenv("API_KEY")
+
+
+if not API_KEY:
+    raise EnvironmentError("API_KEY is not set")
 
 
 def get_conversion_rate():
