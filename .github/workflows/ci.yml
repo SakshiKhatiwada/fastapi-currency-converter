@@ -44,11 +44,6 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      - name: Debug Env
-        run: echo "API_KEY is ${API_KEY:0:4}***"
-        env:
-          API_KEY: ${{ secrets.API_KEY }}
-
       - name: Run Tests
         run: pytest -s
         env:
