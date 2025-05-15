@@ -1,1 +1,4 @@
 fastapi[standard]
+pre_commit==4.2.0
+ruff==0.11.9
+black==25.1.0
