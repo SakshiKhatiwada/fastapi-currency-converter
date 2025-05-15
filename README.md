@@ -47,9 +47,10 @@ Currency Converter App Created with FastAPI under Fuse Machines AI Fellowship As
 
    ```bash
    uvicorn app.main:app --reload
+   ```
 
    **The app will be available at http://localhost:8000**
-   ```
+
 
 ---
 
