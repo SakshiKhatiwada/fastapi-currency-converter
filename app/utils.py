@@ -1,19 +1,23 @@
 import requests
-from app.config import settings
+import os
 from fastapi import HTTPException
+from dotenv import load_dotenv
+
+load_dotenv()
 
 
 API_ENDPOINT = "https://api.freecurrencyapi.com/v1"
+API_KEY = os.getenv("API_KEY")
 
 
 def get_conversion_rate():
-    response = requests.get(f"{API_ENDPOINT}/latest?apikey={settings.api_key}")
+    response = requests.get(f"{API_ENDPOINT}/latest?apikey={API_KEY}")
     response = response.json()["data"]
     return response
 
 
 def get_currencies():
-    response = requests.get(f"{API_ENDPOINT}/currencies?apikey={settings.api_key}")
+    response = requests.get(f"{API_ENDPOINT}/currencies?apikey={API_KEY}")
     return response.json()["data"]
 
 
