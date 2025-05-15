@@ -24,7 +24,15 @@ def get_conversion_rate():
 
 def get_currencies():
     response = requests.get(f"{API_ENDPOINT}/currencies?apikey={API_KEY}")
-    return response.json()["data"]
+    try:
+        data = response.json()
+        if "data" not in data:
+            raise HTTPException(status_code=502, detail=f"API Error: {data}")
+        return data["data"]
+    except Exception as e:
+        raise HTTPException(
+            status_code=502, detail=f"Failed to fetch currencies: {str(e)}"
+        )
 
 
 def currency_converter(data) -> float:
